@@ -9,6 +9,7 @@ public class LeaderboardRepository : ILeaderboardRepository
     #region Dependency Injection
 
     private readonly IDatabase _db;
+    private const string Prefix = "leaderboard:";
 
     public LeaderboardRepository(RedisContext redisContext)
     {
@@ -17,13 +18,28 @@ public class LeaderboardRepository : ILeaderboardRepository
 
     #endregion
 
-    public Task AddScore(string username, string stat, decimal score)
+    public async Task AddScore(string username, string stat, double score)
     {
-        throw new NotImplementedException();
+        var key = Prefix + stat.Trim();
+
+        await _db.SortedSetIncrementAsync(key, username, score);
+        await _db.KeyExpireAsync(key, TimeSpan.FromMinutes(5));
     }
 
-    public Task<List<LeaderboardUser>> GetTopPlayers(string stat)
+    public async Task<List<LeaderboardUser>> GetTopPlayers(string stat, long start, long stop)
     {
-        throw new NotImplementedException();
+        var key = Prefix + stat.Trim();
+
+        var topPlayers = await _db.SortedSetRangeByRankWithScoresAsync(key, start, stop, Order.Ascending);
+
+        // TODO check if can use mapper instead.
+        var leaderboardUser = topPlayers.Select(current => new LeaderboardUser
+        {
+            Username = current.Element!,
+            Stat = stat,
+            Score = current.Score
+        }).ToList();
+
+        return leaderboardUser;
     }
 }
