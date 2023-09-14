@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "RirMoZK4xEUJq0p6zfI/MkzUatUfP2YSch99iVBRzDs=",
+  "Source": "RedisLeaderboard.API",
+  "BasePath": "_content/RedisLeaderboard.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
