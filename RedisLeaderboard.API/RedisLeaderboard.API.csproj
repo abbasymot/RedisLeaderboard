@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RedisLeaderboard.Domain\RedisLeaderboard.Domain.csproj" />
+    <ProjectReference Include="..\RedisLeaderboard.Infrastructure\RedisLeaderboard.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

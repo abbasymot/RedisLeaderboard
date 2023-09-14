@@ -1,6 +1,13 @@
+using RedisLeaderboard.Domain.Repositories;
+using RedisLeaderboard.Infrastructure;
+using RedisLeaderboard.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var redisConnectionString = builder.Configuration.GetConnectionString("RedisConnectionString");
+
+builder.Services.AddSingleton(new RedisContext(redisConnectionString!));
+builder.Services.AddTransient<ILeaderboardRepository, LeaderboardRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -31,3 +31,9 @@
 /home/hparrot/Documents/code/redisLeaderboard/RedisLeaderboard.API/obj/Debug/net7.0/RedisLeaderboard.API.pdb
 /home/hparrot/Documents/code/redisLeaderboard/RedisLeaderboard.API/obj/Debug/net7.0/RedisLeaderboard.API.genruntimeconfig.cache
 /home/hparrot/Documents/code/redisLeaderboard/RedisLeaderboard.API/obj/Debug/net7.0/ref/RedisLeaderboard.API.dll
+/home/hparrot/Documents/code/redisLeaderboard/RedisLeaderboard.API/bin/Debug/net7.0/Pipelines.Sockets.Unofficial.dll
+/home/hparrot/Documents/code/redisLeaderboard/RedisLeaderboard.API/bin/Debug/net7.0/StackExchange.Redis.dll
+/home/hparrot/Documents/code/redisLeaderboard/RedisLeaderboard.API/bin/Debug/net7.0/RedisLeaderboard.Domain.dll
+/home/hparrot/Documents/code/redisLeaderboard/RedisLeaderboard.API/bin/Debug/net7.0/RedisLeaderboard.Infrastructure.dll
+/home/hparrot/Documents/code/redisLeaderboard/RedisLeaderboard.API/bin/Debug/net7.0/RedisLeaderboard.Domain.pdb
+/home/hparrot/Documents/code/redisLeaderboard/RedisLeaderboard.API/bin/Debug/net7.0/RedisLeaderboard.Infrastructure.pdb
