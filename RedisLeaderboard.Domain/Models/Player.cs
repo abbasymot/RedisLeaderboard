@@ -1,6 +1,6 @@
 namespace RedisLeaderboard.Domain.Models;
 
-public class Player
+public class LeaderboardUser
 {
     public int Id { get; set; }
     public string Username { get; set; }
