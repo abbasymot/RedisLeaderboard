@@ -9,18 +9,18 @@ public class LeaderboardApplication : ILeaderboardApplication
 {
     #region Dependency Injection
 
-    private readonly ILeaderboardRepository _repo;
+    private readonly ILeaderboardRepository _leaderboardRepository;
 
-    public LeaderboardApplication(ILeaderboardRepository repo)
+    public LeaderboardApplication(ILeaderboardRepository leaderboardRepository)
     {
-        this._repo = repo;
+        this._leaderboardRepository = leaderboardRepository;
     }
 
     #endregion
 
     public async Task<List<LeaderboardUserVM>> GetTopPlayers(string stat)
     {
-        var topPlayers = await _repo.GetTopPlayers(stat, 0, 19);
+        var topPlayers = await _leaderboardRepository.GetTopPlayers(stat, 0, 19);
 
         if (topPlayers == null || topPlayers.Count == 0)
         {
@@ -37,7 +37,7 @@ public class LeaderboardApplication : ILeaderboardApplication
             return false;
         }
 
-        var result = await _repo.AddScore(username, stat, score);
+        var result = await _leaderboardRepository.AddScore(username, stat, score);
         return result;
     }
 
