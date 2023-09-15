@@ -1,17 +1,62 @@
 using RedisLeaderboard.Application.Contracts;
 using RedisLeaderboard.Application.ViewModels;
+using RedisLeaderboard.Domain.Models;
+using RedisLeaderboard.Domain.Repositories;
 
 namespace RedisLeaderboard.Application.Implementations;
 
 public class LeaderboardApplication : ILeaderboardApplication
 {
-    public List<LeaderboardUserVM> GetTopPlayers(string stat)
+    #region Dependency Injection
+
+    private readonly ILeaderboardRepository _repo;
+
+    public LeaderboardApplication(ILeaderboardRepository repo)
     {
-        throw new NotImplementedException();
+        this._repo = repo;
     }
 
-    public Task AddScore(string username, string stat, double score)
+    #endregion
+
+    public async Task<List<LeaderboardUserVM>> GetTopPlayers(string stat)
     {
-        throw new NotImplementedException();
+        var topPlayers = await _repo.GetTopPlayers(stat, 0, 19);
+
+        if (topPlayers == null || topPlayers.Count == 0)
+        {
+            return new List<LeaderboardUserVM>();
+        }
+
+        return Mapp(topPlayers);
+    }
+
+    public async Task<bool> AddScore(string username, string stat, double score)
+    {
+        if (score == 0)
+        {
+            return false;
+        }
+
+        var result = await _repo.AddScore(username, stat, score);
+        return result;
+    }
+
+    private List<LeaderboardUserVM> Mapp(List<LeaderboardUser> leaderboardUsers)
+    {
+        // I wanted to use AutoMapper but think manually mapping is faster than that.
+
+        var output = new List<LeaderboardUserVM>();
+
+        foreach (var leaderboardUser in leaderboardUsers)
+        {
+            output.Add(new LeaderboardUserVM
+            {
+                Username = leaderboardUser.Username,
+                Stat = leaderboardUser.Stat,
+                Score = leaderboardUser.Score,
+            });
+        }
+
+        return output;
     }
 }

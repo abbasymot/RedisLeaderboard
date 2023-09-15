@@ -4,6 +4,6 @@ namespace RedisLeaderboard.Application.Contracts;
 
 public interface ILeaderboardApplication
 {
-    List<LeaderboardUserVM> GetTopPlayers(string stat);
-    Task AddScore(string username, string stat, double score);
+    Task<List<LeaderboardUserVM>> GetTopPlayers(string stat);
+    Task<bool> AddScore(string username, string stat, double score);
 }

@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RedisLeaderboard.Domain\RedisLeaderboard.Domain.csproj" />
     <ProjectReference Include="..\RedisLeaderboard.Infrastructure\RedisLeaderboard.Infrastructure.csproj" />
+    <ProjectReference Include="..\RedisLeaderboard.Application\RedisLeaderboard.Application.csproj" />
   </ItemGroup>
 
 </Project>

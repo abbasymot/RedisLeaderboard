@@ -5,5 +5,5 @@ namespace RedisLeaderboard.Domain.Repositories;
 public interface ILeaderboardRepository
 {
     Task<List<LeaderboardUser>> GetTopPlayers(string stat, long start, long stop);
-    Task AddScore(string username, string stat, double score);
+    Task<bool> AddScore(string username, string stat, double score);
 }
