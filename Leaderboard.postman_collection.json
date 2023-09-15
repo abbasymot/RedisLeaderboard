@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "df3421d7-4010-471e-9fd2-b1f55d52ca52",
+		"name": "Leaderboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18667092"
+	},
+	"item": [
+		{
+			"name": "AddScore",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/leaderboard/AddScore?username=test user&stat=score&score=20",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"leaderboard",
+						"AddScore"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "test user"
+						},
+						{
+							"key": "stat",
+							"value": "score"
+						},
+						{
+							"key": "score",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTopPlayers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/leaderboard/GetTopPlayers?stat=score",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"leaderboard",
+						"GetTopPlayers"
+					],
+					"query": [
+						{
+							"key": "stat",
+							"value": "score"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
