@@ -17,15 +17,6 @@ public class LeaderboardRepository : ILeaderboardRepository
     }
 
     #endregion
-
-    public async Task AddScore(string username, string stat, double score)
-    {
-        var key = Prefix + stat.Trim();
-
-        await _db.SortedSetIncrementAsync(key, username, score);
-        await _db.KeyExpireAsync(key, TimeSpan.FromMinutes(5));
-    }
-
     public async Task<List<LeaderboardUser>> GetTopPlayers(string stat, long start, long stop)
     {
         var key = Prefix + stat.Trim();
@@ -41,5 +32,13 @@ public class LeaderboardRepository : ILeaderboardRepository
         }).ToList();
 
         return leaderboardUser;
+    }
+
+    public async Task AddScore(string username, string stat, double score)
+    {
+        var key = Prefix + stat.Trim();
+
+        await _db.SortedSetIncrementAsync(key, username, score);
+        await _db.KeyExpireAsync(key, TimeSpan.FromMinutes(5));
     }
 }
