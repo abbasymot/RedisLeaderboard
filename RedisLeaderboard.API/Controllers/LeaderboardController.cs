@@ -35,6 +35,7 @@ public class LeaderboardController : ControllerBase
             return BadRequest();
         }
 
-        return Ok(result);
+        return Ok();
+        // return CreatedResult();
     }
 }
