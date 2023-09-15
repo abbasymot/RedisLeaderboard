@@ -22,7 +22,7 @@ public class LeaderboardRepository : ILeaderboardRepository
     {
         var key = Prefix + stat.Trim();
 
-        var topPlayers = await _db.SortedSetRangeByRankWithScoresAsync(key, start, stop, Order.Ascending);
+        var topPlayers = await _db.SortedSetRangeByRankWithScoresAsync(key, start, stop, Order.Descending);
 
         // TODO check if can use mapper instead.
         var leaderboardUser = topPlayers.Select(current => new LeaderboardUser
