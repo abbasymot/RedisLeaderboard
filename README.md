@@ -8,7 +8,7 @@ Ensure that you have Docker and Docker-Compose installed.
 
 Go to the RedisLeaderboard direcotry using ```cd RedisLeaderboard```.
 
-To run the container, use the `docker-compose --build` command. You can also add `-d` to run it in detached mode.
+To run the container, use the `docker-compose up --build` command. You can also add `-d` to run it in detached mode.
 
 You can check the container's status using the `docker ps` command.
 
